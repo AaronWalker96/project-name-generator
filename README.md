@@ -1,0 +1,1 @@
+# golang-name-generator
