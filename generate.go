@@ -9,6 +9,7 @@ import (
 func generateRanNum(min int, max int) int {
 	// Start by getting a new random seed
 	rand.Seed(time.Now().UnixNano())
+
 	// Return a random number between min and max
 	return rand.Intn(max-min) + min
 }
@@ -37,8 +38,6 @@ func generate() string {
 }
 
 func main() {
-
 	// Generate a word
 	fmt.Println(generate())
-
 }
