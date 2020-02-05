@@ -9,4 +9,4 @@ me learn Golang.
 
 ## Running the Project
 
-A `docker-compose.yml` file has been provided which can be run with `docker-compose up` where the api can be accessed on `localhost:8080`. Generated words are provided on the `generate` endpoint. 
+A `docker-compose.yml` file has been provided which can be run with `docker-compose up` providing Docker and docker-compose are installed on the host machine. The api can be accessed on `localhost:8080`. Generated words are provided on the `/generate` endpoint. 
