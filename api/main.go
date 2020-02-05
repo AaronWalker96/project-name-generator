@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"math/rand"
@@ -8,6 +9,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 // A function to generate a random number with a random seed.
@@ -21,6 +23,8 @@ func generateRanNum(min int, max int) int {
 
 // Define the logic to generate a random word.
 func generate(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Generate Called")
+
 	// Declare vowels and consonants
 	vowels := [5]string{"a", "e", "i", "o", "u"}
 	consonants := [21]string{
@@ -42,7 +46,17 @@ func generate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	fmt.Fprintf(w, word)
+	//Marshal or convert word to json and write to response
+	wordJson, err := json.Marshal(word)
+	if err != nil {
+		panic(err)
+	}
+
+	//Set Content-Type header so that clients will know how to read response
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	//Write json response back to response
+	w.Write(wordJson)
 }
 
 // Define a default response for the home route.
@@ -54,6 +68,10 @@ func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", home)
 	router.HandleFunc("/generate", generate)
+
+	// Accept CORS requests
+	handler := cors.Default().Handler(router)
+
 	fmt.Println("Server listening!")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }
