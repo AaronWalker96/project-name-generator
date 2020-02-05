@@ -23,10 +23,9 @@ func generateRanNum(min int, max int) int {
 func generate(w http.ResponseWriter, r *http.Request) {
 	// Declare vowels and consonants
 	vowels := [5]string{"a", "e", "i", "o", "u"}
-	consonants := [21]string{ 
-		"b", "c", "d", "f", "g", "h","j", "k", "l", "m", "n",
-		"p", "q", "r", "s", "t", "v", "w", "x", "y", "z"
-	}
+	consonants := [21]string{
+		"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n",
+		"p", "q", "r", "s", "t", "v", "w", "x", "y", "z"}
 
 	// Declare an empty word variable to hold the word
 	word := ""
@@ -55,9 +54,5 @@ func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", home)
 	router.HandleFunc("/generate", generate)
-
-	// Accept CORS requests
-	handler := cors.Default().Handler(router)
-
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
