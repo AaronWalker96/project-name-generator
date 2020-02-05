@@ -9,7 +9,4 @@ me learn Golang.
 
 ## Running the Project
 
-The api can be started by running the command `go run main.go`
-where access will be available at `localhost:8080`. You can
-get a generated word by making a call to the `/generate`
-endpoint.
+A `docker-compose.yml` file has been provided which can be run with `docker-compose up` where the api can be accessed on `localhost:8080`. Generated words are provided on the `generate` endpoint. 
