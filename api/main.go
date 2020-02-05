@@ -47,12 +47,13 @@ func generate(w http.ResponseWriter, r *http.Request) {
 
 // Define a default response for the home route.
 func home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World!")
+	fmt.Fprintf(w, "Hello, World! This is an API written in GO! Try navigating to the /generate url.")
 }
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", home)
 	router.HandleFunc("/generate", generate)
+	fmt.Println("Server listening!")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
