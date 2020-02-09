@@ -66,8 +66,8 @@ func home(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/", home)
-	router.HandleFunc("/generate", generate)
+	router.HandleFunc("/api", home)
+	router.HandleFunc("/api/generate", generate)
 
 	// Accept CORS requests
 	handler := cors.Default().Handler(router)
