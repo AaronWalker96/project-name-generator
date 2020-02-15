@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -47,7 +48,7 @@ func generate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//Marshal or convert word to json and write to response
-	wordJson, err := json.Marshal(word)
+	wordJson, err := json.Marshal(strings.Title(word))
 	if err != nil {
 		panic(err)
 	}
