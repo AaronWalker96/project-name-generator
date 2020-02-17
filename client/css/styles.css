@@ -12,11 +12,14 @@ body {
 
 .nav {
     display: flex;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
     justify-content: flex-end;
 }
 
 .nav-item {
-    width: 100px;
+    width: 50px;
     margin: 10px;
     text-align: center;
     line-height: 75px;
@@ -33,12 +36,14 @@ img {
 h1 {
     color: #ff5e62;
     margin: 0;
+    padding: 0;
     font-size: 50px;
 }
 
 h2 {
     color: #ff5e62;
     margin: 0;
+    padding: 0;
     font-size: 50px;
 }
 
@@ -46,19 +51,10 @@ a {
     text-decoration: none;
     color: #ff5e62;
 }
-a:visited {
-    color:#ff5e62;
-}
-a:hover {
-    color:#ff5e62;
-}
-a:active {
-    color:#ff5e62;
-}
 
 .column {
     width: 100em;
-    margin: 10em;
+    margin: 8em;
 }
 
 #generate {
@@ -86,6 +82,15 @@ a:active {
     justify-content: center;
 }
 
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .page-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 a.button{
     display:inline-block;
     padding:0.3em 1.2em;
@@ -100,6 +105,7 @@ a.button{
     text-align:center;
     transition: all 0.2s;
 }
+
 a.button:hover{
     background-color: #792021;
 }
