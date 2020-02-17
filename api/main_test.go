@@ -24,7 +24,7 @@ func TestGenerateWord(t *testing.T) {
 	maxWord := 8
 	sum := 1
 
-	// Generate a random number 10 times, if any of the numbers
+	// Generate a random word 10 times, if any of the words
 	// are outside the specified bounds, fail the test.
 	for sum < 10 {
 		sum += sum
