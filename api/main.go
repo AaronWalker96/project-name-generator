@@ -13,6 +13,10 @@ import (
 	"github.com/rs/cors"
 )
 
+//Define globals for word settings
+var minWordLength = 4
+var maxWordLentgh = 8
+
 // A function to generate a random number with a random seed.
 func generateRanNum(min int, max int) int {
 	// Start by getting a new random seed
@@ -22,10 +26,7 @@ func generateRanNum(min int, max int) int {
 	return rand.Intn(max-min) + min
 }
 
-// Define the logic to generate a random word.
-func generate(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Generate Called")
-
+func generateWord(min int, max int) string {
 	// Declare vowels and consonants
 	vowels := [5]string{"a", "e", "i", "o", "u"}
 	consonants := [21]string{
@@ -36,7 +37,7 @@ func generate(w http.ResponseWriter, r *http.Request) {
 	word := ""
 
 	// Get a random number for the length of our generated word
-	maxLength := generateRanNum(4, 8)
+	maxLength := generateRanNum(min, max)
 
 	// Generate the word
 	for i := 1; i < maxLength; i++ {
@@ -47,8 +48,16 @@ func generate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	return word
+}
+
+// Define the logic to generate a random word.
+func generate(w http.ResponseWriter, r *http.Request) {
+	// Get a random word
+	word := generateWord(minWordLength, maxWordLentgh)
+
 	//Marshal or convert word to json and write to response
-	wordJson, err := json.Marshal(strings.Title(word))
+	wordJSON, err := json.Marshal(strings.Title(word))
 	if err != nil {
 		panic(err)
 	}
@@ -57,7 +66,7 @@ func generate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	//Write json response back to response
-	w.Write(wordJson)
+	w.Write(wordJSON)
 }
 
 // Define a default response for the home route.
