@@ -1,7 +1,7 @@
-# Golang Name Generator
+# Project Name Generator
 
-Ever wanted to generate a random word using code? Great!
-Then the golang name generator is for you!
+Can't name that new project you're working on?
+Great! Then the project name generator is for you!
 
 This project is based on a similar project I created,
 written in Python. I'm rebuilding this project to help
@@ -14,7 +14,7 @@ be run with `docker-compose up` providing Docker and
 docker-compose are installed on the host machine. The
 front end can be accessed on `localhost:5000`. The api
 can be accessed on `localhost:8080/api`. Generated words
-are provided on the `api/generate` endpoint. 
+are provided on the `api/generate` endpoint.
 
 ## API
 
@@ -26,4 +26,4 @@ random word.
 
 The client app is written in HTML, CSS and JS and
 will display a generated word when the `generate`
-button is clicked. 
+button is clicked.
