@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -74,6 +75,15 @@ func home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World! This is an API written in GO! Try navigating to the /generate url.")
 }
 
+// Get port, if non found, use 8080
+func getPort() string {
+	p := os.Getenv("PORT")
+	if p != "" {
+		return ":" + p
+	}
+	return ":8080"
+}
+
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/api", home)
@@ -82,6 +92,9 @@ func main() {
 	// Accept CORS requests
 	handler := cors.Default().Handler(router)
 
+	// Get port
+	port := getPort()
+
 	fmt.Println("Server listening!")
-	log.Fatal(http.ListenAndServe(":8080", handler))
+	log.Fatal(http.ListenAndServe(":"+port, handler))
 }
