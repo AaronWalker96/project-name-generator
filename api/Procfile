@@ -1,1 +1,1 @@
-web: api/main
+web: main
