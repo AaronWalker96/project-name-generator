@@ -1,1 +1,1 @@
-web: api/main.go
+web: api
