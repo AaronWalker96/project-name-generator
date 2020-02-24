@@ -79,9 +79,9 @@ func home(w http.ResponseWriter, r *http.Request) {
 func getPort() string {
 	p := os.Getenv("PORT")
 	if p != "" {
-		return ":" + p
+		return p
 	}
-	return ":8080"
+	return "8080"
 }
 
 func main() {
